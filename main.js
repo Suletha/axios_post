@@ -14,14 +14,23 @@ document.getElementById("submitButton").addEventListener("click", function () {
         email: email,
         phone: phone,
     };
-
-    axios.post("https://crudcrud.com/api/df7fb11a5e624d5e9f7d329df9251dcc/user_details",users)
-        .then((respone) => {
-            console.log(respone)
+    //window.addEventListener("DOMContentLoaded", () =>{
+        axios.post("https://crudcrud.com/api/190462e5a3844a8c8433309bdf58123b/Appointment_data",user)
+        .then((response) => {
+            console.log(response) 
+            for(var i=0; i<response.data.length;i++){
+                showNewUserOnScreen(response.data[i])
+            }
         })
-        .catch((err) =>{
+        .catch((error) =>{
+            console.log(error)
 
         })
+
+    //})
+    
+
+    
     // Add the user object to the array
     users.push(user);
 
@@ -41,3 +50,4 @@ document.getElementById("submitButton").addEventListener("click", function () {
         `;
     });
 });
+displayUserDetails();
